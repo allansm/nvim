@@ -39,9 +39,14 @@ function! s:Mem()
 	:execute 'Sh memorize ' . getline(".")
 endfunction
 
-function! s:Test()
-	:execute 's/'. getline(".").'//g'
-	:execute 'Exec php test.php '.getline(".") 
+function! s:Ac()
+	let line=getline(".")
+	:execute 's/'.line.'//g'
+	:execute 'Exec autoComplete '.line 
+endfunction
+
+function! s:Fn(fname)
+	:execute 'Sh functionNames ' . a:fname 
 endfunction
 
 command! -nargs=1 Exec call s:Exec(<f-args>)
@@ -60,4 +65,6 @@ command! -nargs=1 Sh call s:Sh(<f-args>)
 
 command! -nargs=0 Mem call s:Mem()
 
-command! -nargs=0 Test call s:Test()
+command! -nargs=0 Ac call s:Ac()
+
+command! -nargs=1 Fn call s:Fn(<f-args>)
