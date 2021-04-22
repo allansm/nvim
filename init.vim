@@ -49,7 +49,7 @@ function! s:Fn(fname)
 	:execute 'Sh functionNames ' . a:fname 
 endfunction
 
-command! -nargs=1 Exec call s:Exec(<f-args>)
+command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=0 Vp call s:Vp()
 command! -nargs=0 Hp call s:Hp()
@@ -61,10 +61,10 @@ command! -nargs=1 Vs call s:Vs(<f-args>)
 command! -nargs=1 Hs call s:Hs(<f-args>)
 
 
-command! -nargs=1 Sh call s:Sh(<f-args>)
+command! -nargs=1 -complete=file Sh call s:Sh(<f-args>)
 
 command! -nargs=0 Mem call s:Mem()
 
 command! -nargs=0 Ac call s:Ac()
 
-command! -nargs=1 Fn call s:Fn(<f-args>)
+command! -nargs=1 -complete=file Fn call s:Fn(<f-args>)
