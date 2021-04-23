@@ -50,7 +50,7 @@ function! s:Fn(fname)
 endfunction
 
 function! s:I(fname)
-	:execute 'Exec echo' . a:fname	
+	:execute 'Exec echo ' . a:fname	
 endfunction
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
