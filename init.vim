@@ -49,6 +49,10 @@ function! s:Fn(fname)
 	:execute 'Sh functionNames ' . a:fname 
 endfunction
 
+function! s:I(fname)
+	:execute 'Exec echo' . a:fname	
+endfunction
+
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=0 Vp call s:Vp()
@@ -68,3 +72,5 @@ command! -nargs=0 Mem call s:Mem()
 command! -nargs=0 Ac call s:Ac()
 
 command! -nargs=1 -complete=file Fn call s:Fn(<f-args>)
+
+command! -nargs=1 -complete=file I call s:I(<f-args>)
