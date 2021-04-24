@@ -9,7 +9,7 @@ endif
 
 let colors_name = "allan"
 
-hi Normal ctermfg=46 ctermbg=Black guifg=#dddddd	guibg=#ffffff
+"hi Normal ctermfg=46 ctermbg=Black guifg=#dddddd	guibg=#ffffff
 
 
 hi Comment    cterm=italic ctermfg=124  gui=italic guifg=#dddddd   	 
