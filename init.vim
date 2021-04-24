@@ -36,13 +36,17 @@ endfunction
 
 
 function! s:Mem()
-	:execute 'Sh memorize ' . getline(".")
+	let vimp = stdpath("config").'\memorize\memorize.php'
+	let command='new term://php '.vimp.' '. getline(".")
+	echo command
+	:execute command
 endfunction
 
 function! s:Ac()
+	let vimp = stdpath("config").'\memorize\autoComplete.php'
 	let line=getline(".")
 	:execute 's/'.line.'//g'
-	:execute 'Exec autoComplete '.line 
+	:execute 'Exec php '.vimp.' '.line 
 endfunction
 
 function! s:Fn(fname)
@@ -51,6 +55,11 @@ endfunction
 
 function! s:I(fname)
 	:execute 'Exec echo ' . a:fname	
+endfunction
+
+function! s:Test()
+	let vimp = stdpath("config").'\test\'
+	:execute 'Exec php '.vimp.'a.php'
 endfunction
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
@@ -74,3 +83,5 @@ command! -nargs=0 Ac call s:Ac()
 command! -nargs=1 -complete=file Fn call s:Fn(<f-args>)
 
 command! -nargs=1 -complete=file I call s:I(<f-args>)
+
+command! -nargs=0 -complete=file Test call s:Test()
