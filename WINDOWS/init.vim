@@ -2,6 +2,9 @@
 :set splitright
 :set splitbelow
 
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
+
 function! s:Exec(command)
     :exe ":normal i" . system(a:command)
 endfunction
@@ -36,21 +39,22 @@ endfunction
 
 
 function! s:Mem()
-	let vimp = stdpath("config").'\memorize\memorize.php'
+	let vimp = stdpath("config").'\php\memorize\memorize.php'
 	let command='new term://php '.vimp.' '. getline(".")
 	echo command
 	:execute command
 endfunction
 
 function! s:Ac()
-	let vimp = stdpath("config").'\memorize\autoComplete.php'
+	let vimp = stdpath("config").'\php\memorize\autoComplete.php'
 	let line=getline(".")
 	:execute 's/'.line.'//g'
 	:execute 'Exec php '.vimp.' '.line 
 endfunction
 
 function! s:Fn(fname)
-	:execute 'Sh functionNames ' . a:fname 
+	let vimp = stdpath("config").'\python\functionNames\functionNames.py'
+	:execute 'Sh python '.vimp.' ' . a:fname 
 endfunction
 
 function! s:I(fname)

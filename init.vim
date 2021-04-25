@@ -58,9 +58,8 @@ function! s:I(fname)
 	:execute 'Exec echo ' . a:fname	
 endfunction
 
-function! s:Test()
-	let vimp = stdpath("config").'\test\'
-	:execute 'Exec php '.vimp.'a.php'
+function! Test()
+	return system('echo test')
 endfunction
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
@@ -85,4 +84,7 @@ command! -nargs=1 -complete=file Fn call s:Fn(<f-args>)
 
 command! -nargs=1 -complete=file I call s:I(<f-args>)
 
-command! -nargs=0 -complete=file Test call s:Test()
+"command! -nargs=0 -complete=file Test call Test()
+
+filetype plugin on
+set omnifunc=Test
