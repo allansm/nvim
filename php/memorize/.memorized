@@ -1,2 +1,8 @@
-helloworld
 System.out.println()
+import java.awt.image.BufferedImage;
+import java.awt.Toolkit;
+import java.io.File;
+import javax.imageio.ImageIO;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.text.DecimalFormat;
