@@ -55,7 +55,7 @@ function! s:Fn(fname)
 endfunction
 
 function! s:I(fname)
-	:execute 'Exec echo ' . a:fname	
+	:execute 'normal i ' . a:fname	
 endfunction
 
 "function! Test()

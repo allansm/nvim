@@ -7,9 +7,8 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	
 	let vimp = nvim.'/python/functionNames/getAllFunctionNames.py'
 	let p = getcwd()
-	let co = 'python '.vimp.' '.p.''
-	echo co
+	let co = 'python '.vimp.' "'.p.'"'
 	let result = system(co)
 
-	return split(result.',')
+	return split(result,'?')
 endfun
