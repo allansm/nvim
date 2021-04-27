@@ -91,4 +91,6 @@ command! -nargs=1 -complete=file I call s:I(<f-args>)
 "command! -nargs=0 -complete=file Test call s:Test()
 
 filetype plugin on
-set omnifunc=test#Test
+set omnifunc=memorized#AutoComplete
+
+set completefunc=functionnames#GetAllFunctionNames 
