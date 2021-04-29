@@ -10,5 +10,5 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	let co = 'python '.vimp.' "'.p.'"'
 	let result = system(co)
 
-	return split(result,'?')
+	return split(result,'?@?')
 endfun
