@@ -58,14 +58,6 @@ function! s:I(fname)
 	:execute 'normal i ' . a:fname	
 endfunction
 
-"function! Test()
-"	let vimp = stdpath("config").'\php\memorize\autoComplete.php'
-"	let line=getline(".")
-
-"	let result = system('php '.vimp.' '.line)
-"	return result
-"endfunction
-
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=0 Vp call s:Vp()
@@ -88,7 +80,6 @@ command! -nargs=1 -complete=file Fn call s:Fn(<f-args>)
 
 command! -nargs=1 -complete=file I call s:I(<f-args>)
 
-"command! -nargs=0 -complete=file Test call s:Test()
 
 filetype plugin on
 set omnifunc=memorized#AutoComplete
