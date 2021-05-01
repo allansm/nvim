@@ -15,6 +15,32 @@ from fn import *
 
 import argparse
 
+def test(fold):
+    functions = ""
+    for f in fold:
+        if(os.path.isfile(f)):
+            fun = getFunctions(f,"",";")
+            if(fun != "" or not fun):
+                functions = functions+";"+fun
+        else:
+            chdir(f)
+
+            files = ls(".","*.*")
+
+            for fi in files:
+                #try:
+                    fun = getFunctions(fi,"",";")
+                    if(fun != "" or not fun):
+                        functions = functions+";"+fun
+               # except:
+                #    continue
+            
+            chdir("..")
+
+    return functions
+
+
+
 parser = argparse.ArgumentParser(description='')
 parser.add_argument("code",type=str)
 
@@ -30,7 +56,9 @@ fold = ls(".","*")
 
 functions = ""
 
-for f in fold:
+
+functions = test(fold)
+'''for f in fold:
     if(os.path.isfile(f)):
         fun = getFunctions(f,"",";")
         if(fun != "" or not fun):
@@ -46,15 +74,12 @@ for f in fold:
                 if(fun != "" or not fun):
                     functions = functions+";"+fun
             except:
-                dummy = ""
+                continue
         
         chdir("..")
-
+'''
 functions = functions.replace(";","")
 functions = removeBreakLine(functions)
 functions = functions.replace("{","?@?")
 functions = functions.replace(":","?@?")
-functions = functions.replace("def ","")
-functions = functions.replace("function ","")
-
 print(functions)
