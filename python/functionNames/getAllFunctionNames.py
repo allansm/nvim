@@ -12,6 +12,7 @@ from fileHandle import *
 from os import chdir
 from os import getcwd
 from fn import *
+from subprocess import call
 
 import argparse
 
@@ -32,13 +33,13 @@ functions = ""
 
 for f in fold:
     if(os.path.isfile(f)):
-        #print("file:"+f)
+        #print(f+";",end='')
         fun = getFunctions(f,"",";")
         if(fun != "" or not fun):
             functions = functions+";"+fun
     else:
         chdir(f)
-        #print("dir:"+f)
+        #print(f+";",end='')
         files = ls(".","*.*")
 
         for fi in files:
@@ -61,4 +62,13 @@ functions = functions.replace("/","")
 functions = functions.replace("*","")
 functions = functions.replace(" ","")
 functions = functions.replace("$","")
-print(functions)
+
+functions = functions.replace(";"," ")
+
+functions = functions[:len(functions) -1]
+
+functions = removeBreakLine(functions)
+
+print(functions,end = '')
+
+#call("echo "+functions,shell=True)

@@ -11,8 +11,11 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	let result = system(co)
 	
 	let res = []
-	let res = split(result,';')
-	call add(res,'..')
+	call add(res,' ')
+
+	for m in split(result)
+		call add(res,m)
+	endfor
 
 	return res
 endfun
