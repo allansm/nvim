@@ -39,22 +39,23 @@ def getFunctions(fn,txt,tok):
         if "catch" not in line:
             if "elif" not in line:
                 if "=" not in line:
-                    if "def " in line:
-                        if "(" in line:
-                            functions = functions+tok+txt+line.strip()
-                    
-                    elif "function " in line:
-                        if "(" in line:
-                            functions = functions+tok+txt+line.strip()
+                    if "/" not in line:
+                        if "def " in line:
+                            if "(" in line:
+                                functions = functions+tok+txt+line.strip()
+                        
+                        elif "function " in line:
+                            if "(" in line:
+                                functions = functions+tok+txt+line.strip()
 
-                    #elif "function!" in line:
-                    #    functions = functions+tok+txt+line.strip()
+                        #elif "function!" in line:
+                        #    functions = functions+tok+txt+line.strip()
 
-                    
-                    elif "(" in line:
-                        if "{" in line:
-                            if "while" not in line:
-                                if "for" not in line:
-                                    if "if" not in line:
-                                        functions = functions+tok+txt+line.strip()
+                        
+                        elif "(" in line:
+                            if "{" in line:
+                                if "while" not in line:
+                                    if "for" not in line:
+                                        if "if" not in line:
+                                            functions = functions+tok+txt+line.strip()
     return functions

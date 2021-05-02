@@ -32,12 +32,13 @@ functions = ""
 
 for f in fold:
     if(os.path.isfile(f)):
+        #print("file:"+f)
         fun = getFunctions(f,"",";")
         if(fun != "" or not fun):
             functions = functions+";"+fun
     else:
         chdir(f)
-
+        #print("dir:"+f)
         files = ls(".","*.*")
 
         for fi in files:
@@ -52,9 +53,11 @@ for f in fold:
 
 functions = functions.replace(";","")
 functions = removeBreakLine(functions)
-functions = functions.replace("{","?@?")
-functions = functions.replace(":","?@?")
+functions = functions.replace("{",";")
+functions = functions.replace(":",";")
 functions = functions.replace("def ","")
 functions = functions.replace("function ","")
-
+functions = functions.replace("/","")
+functions = functions.replace("*","")
+functions = functions.replace(" ","")
 print(functions)
