@@ -6,13 +6,13 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	endif
 	
 	let vimp = nvim.'/python/functionNames/getAllFunctionNames.py'
-	"let p = getcwd()
+	
 	let co = 'python '.vimp.' .'
 	let result = system(co)
 	
 	let res = []
 	let res = split(result,';')
-	call add(res,'.')
-	"echo res
+	call add(res,'..')
+
 	return res
 endfun
