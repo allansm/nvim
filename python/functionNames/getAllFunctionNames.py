@@ -33,13 +33,13 @@ functions = ""
 
 for f in fold:
     if(os.path.isfile(f)):
-        #print(f+";",end='')
+        
         fun = getFunctions(f,"",";")
         if(fun != "" or not fun):
             functions = functions+";"+fun
     else:
         chdir(f)
-        #print(f+";",end='')
+        
         files = ls(".","*.*")
 
         for fi in files:
@@ -69,6 +69,13 @@ functions = functions[:len(functions) -1]
 
 functions = removeBreakLine(functions)
 
-print(functions,end = '')
+arr = functions.split()
+arr = list(dict.fromkeys(arr))
 
-#call("echo "+functions,shell=True)
+fu = " "
+fu = fu.join(arr)
+
+print(fu)
+
+#print(functions,end = '')
+

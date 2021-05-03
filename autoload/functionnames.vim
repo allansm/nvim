@@ -12,9 +12,11 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	
 	let res = []
 	call add(res,' ')
+	"call add(res,' ')
 
 	for m in split(result)
 		call add(res,m)
+		"echo m
 	endfor
 
 	return res
