@@ -35,3 +35,7 @@ hi Delimiter  cterm=NONE ctermfg=124   	gui=NONE guifg=#ffffff
 hi Pmenu cterm=NONE ctermbg=NONE ctermfg=46 gui=NONE guifg=#ffffff
 hi StatusLineNC cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
 hi VertSplit cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
+hi ColorColumn cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
+hi OverLength cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
+
+ 
