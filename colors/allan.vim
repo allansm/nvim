@@ -37,5 +37,5 @@ hi StatusLineNC cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
 hi VertSplit cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
 hi ColorColumn cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
 hi OverLength cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
-
+hi StatusLine cterm=NONE ctermbg=NONE ctermfg=NONE gui=NONE guifg=#ffffff
  

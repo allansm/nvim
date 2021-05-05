@@ -37,7 +37,6 @@ for f in fold:
 
     if(os.path.isfile(f)):
         fun = getFunctions(f,"",";")
-        #if(fun.find(match) != -1):
         if(fun != "" or not fun):
             functions = functions+";"+fun
     else:
@@ -48,7 +47,6 @@ for f in fold:
         for fi in files:
             try:
                 fun = getFunctions(fi,"",";")
-                #if(fun.find(match) != -1):
                 if(fun != "" or not fun):
                     functions = functions+";"+fun
             except:
@@ -81,8 +79,8 @@ i = 0
 arr2 = []
 if(match != "@"):
     for e in arr:
-        if(e.find(match) != -1):
-            arr2.append(e)   
+        if(e.startswith(match)):
+            arr2.append(e.replace(match,""))   
         i = i+1
 else:
     arr2 = arr
@@ -90,6 +88,4 @@ fu = " "
 fu = fu.join(arr2)
 
 print(fu)
-
-#print(functions,end = '')
 

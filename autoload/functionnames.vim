@@ -8,25 +8,15 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	let vimp = nvim.'/python/functionNames/getAllFunctionNames.py'
 	
 	let line=getline(".")
-	
+
 	if line == ''
 		let line = '@'
-	endif
-
-	":execute '%s/'.line.'//g'
-
+	endif	
 
 	let co = 'python '.vimp.' . '.line
 	let result = system(co)
 	
-	"let res = []
-	"call add(res,' ')
-	"call add(res,' ')
-
-	"for m in split(result)
-	"	call add(res,m)
-		"echo m
-	"endfor
-
-	return split(result)
+	let result = split(result)
+	
+	return result
 endfun
