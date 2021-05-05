@@ -7,17 +7,26 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	
 	let vimp = nvim.'/python/functionNames/getAllFunctionNames.py'
 	
-	let co = 'python '.vimp.' .'
+	let line=getline(".")
+	
+	if line == ''
+		let line = '@'
+	endif
+
+	":execute '%s/'.line.'//g'
+
+
+	let co = 'python '.vimp.' . '.line
 	let result = system(co)
 	
-	let res = []
-	call add(res,' ')
+	"let res = []
+	"call add(res,' ')
 	"call add(res,' ')
 
-	for m in split(result)
-		call add(res,m)
+	"for m in split(result)
+	"	call add(res,m)
 		"echo m
-	endfor
+	"endfor
 
-	return res
+	return split(result)
 endfun

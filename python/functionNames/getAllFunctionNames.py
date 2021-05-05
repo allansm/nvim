@@ -18,9 +18,10 @@ import argparse
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument("code",type=str)
+parser.add_argument("word",type=str)
 
 code = parser.parse_args().code
-
+match = parser.parse_args().word
 
 
 chdir(code)
@@ -32,9 +33,11 @@ fold = ls(".","*")
 functions = ""
 
 for f in fold:
+    fun = ""
+
     if(os.path.isfile(f)):
-        
         fun = getFunctions(f,"",";")
+        #if(fun.find(match) != -1):
         if(fun != "" or not fun):
             functions = functions+";"+fun
     else:
@@ -45,10 +48,12 @@ for f in fold:
         for fi in files:
             try:
                 fun = getFunctions(fi,"",";")
+                #if(fun.find(match) != -1):
                 if(fun != "" or not fun):
                     functions = functions+";"+fun
             except:
                 dummy = ""
+            
         
         chdir("..")
 
@@ -72,8 +77,17 @@ functions = removeBreakLine(functions)
 arr = functions.split()
 arr = list(dict.fromkeys(arr))
 
+i = 0
+arr2 = []
+if(match != "@"):
+    for e in arr:
+        if(e.find(match) != -1):
+            arr2.append(e)   
+        i = i+1
+else:
+    arr2 = arr
 fu = " "
-fu = fu.join(arr)
+fu = fu.join(arr2)
 
 print(fu)
 
