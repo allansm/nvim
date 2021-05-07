@@ -20,8 +20,10 @@ import argparse
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument("code",type=str)
+parser.add_argument("match",type=str)
 
 code = parser.parse_args().code
+match = parser.parse_args().match
 
 chdir(code)
 chdir("..")
@@ -63,7 +65,12 @@ for val in arr:
                 if not "\"" in tmp:
                     if not "+" in tmp:
                         if not "#" in tmp:
-                            arr2.append(tmp)
+                            if tmp.startswith(match):
+                                tmp = tmp.replace(match,"")
+                                arr2.append(tmp)
+                            
+                            elif match == "@":
+                                arr2.append(tmp)
 
 variables = ""
 arr2 = list(dict.fromkeys(arr2))
