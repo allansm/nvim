@@ -12,8 +12,7 @@ from fileHandle import *
 from os import chdir
 from os import getcwd
 
-#edit this
-from test2 import *
+from vn import *
 
 from subprocess import call
 
@@ -21,10 +20,8 @@ import argparse
 
 parser = argparse.ArgumentParser(description='')
 parser.add_argument("code",type=str)
-#parser.add_argument("word",type=str)
 
 code = parser.parse_args().code
-#match = parser.parse_args().word
 
 chdir(code)
 chdir("..")
@@ -35,7 +32,6 @@ variables = ""
 
 for f in fold:
     if(os.path.isfile(f)):
-        #print(f)
         var = getVariables(f,"",";")
         if(var != "" or not var):
             variables = variables+";"+var
@@ -45,7 +41,6 @@ for f in fold:
         files = ls(".","*.*")
 
         for fi in files:
-            #print(fi)
             try:
                 var = getVariables(fi,"",";")
                 if(var != "" or not var):
@@ -57,15 +52,21 @@ for f in fold:
         
         chdir("..")
 
-#variables = variables.replace(";","")
-#variables = removeBreakLine(variables)
 arr = variables.split(";")
 arr = list(dict.fromkeys(arr))
 arr2 = []
 for val in arr:
-    arr2.append(val.split("=")[0])
+    tmp = val.split("=")[0]
+    if not "." in tmp:
+        if not "," in tmp:
+            if not "(" in tmp:
+                if not "\"" in tmp:
+                    if not "+" in tmp:
+                        if not "#" in tmp:
+                            arr2.append(tmp)
 
-#del variables
-variables = " "
+variables = ""
+arr2 = list(dict.fromkeys(arr2))
 variables = variables.join(arr2)
 
+print(variables)
