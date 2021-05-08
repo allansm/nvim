@@ -2,6 +2,16 @@
 :set splitright
 :set splitbelow
 
+function! Nvim()
+	if has("win64") || has("win32") || has("win16")
+		let nvim = '%userprofile%/appdata/local/nvim'
+	else
+		let nvim = '~/.config/nvim'
+	endif
+
+	return nvim
+endfunction
+
 function! s:Exec(command)
     :exe ":normal i" . system(a:command)
 endfunction
@@ -58,6 +68,27 @@ function! s:I(fname)
 	:execute 'normal i ' . a:fname	
 endfunction
 
+function! s:Gt()
+	let vimp = Nvim().'/python/GetterAndSetter/'
+	let ext = ''.expand('%:e')
+
+	if ext == 'php'
+		let vimp = vimp.'phpGetterAndSetter.py'
+	elseif ext == 'java'
+		let vimp = vimp.'javaGetterAndSetter.py'
+	else
+		let vimp = ''
+	endif
+	
+	if vimp != ''
+		let co = 'python '.vimp.' g "'.getline('.').'"'
+		let exe = 'normal i '.system(co)
+
+		:execute exe
+	endif
+	
+endfunction
+
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=0 Vp call s:Vp()
@@ -79,6 +110,8 @@ command! -nargs=0 Ac call s:Ac()
 command! -nargs=1 -complete=file Fn call s:Fn(<f-args>)
 
 command! -nargs=1 -complete=file I call s:I(<f-args>)
+
+command! -nargs=0 Gt call s:Gt()
 
 
 filetype plugin on
