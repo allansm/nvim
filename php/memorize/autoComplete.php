@@ -1,7 +1,5 @@
 <?php
 
-//include("../functions/util.php");
-
 $words = array();
 $words = $argv;
 
@@ -14,17 +12,16 @@ try{
 	
 	foreach($memorized as $mem){
 		if(str_starts_with($mem,$line)){
+			$mem = str_replace(array("\n", "\r"), '', $mem);
 			$tmp = str_replace($line,"",$mem);
-		//if(!(strpos($mem, $line) === false)){
 			if($line != ""){
-				print($tmp)." ";
-				//die();
+				print($tmp).",,";
 			}
 		}else if($line == "@"){
-			print($mem." ");
+			$mem = str_replace(array("\n", "\r"), '', $mem);
+			print($mem.",,");
 		}
-	}
+	}die();
 }catch(exception $e){}
 
-//print(removeLineBreak($line));
 print($line);
