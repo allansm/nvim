@@ -15,25 +15,36 @@ def indent():
     return "    "
 
 def getter(line):
-    tmp = line.split()
-    tmp[2] = tmp[2].replace(";","")
+    mod = ""
+    if "static" in line:
+        mod = "static "
 
-    generated = indent()+"public "+tmp[1]+" get"+tmp[2].capitalize()+"(){\n"+indent()+indent()+"return this."+tmp[2]+";\n"+indent()+"}"
+    tmp = line.split()
+    tmp[-1] = tmp[-1].replace(";","")
+
+    generated = "public "+mod+tmp[-2]+" get"+tmp[-1].capitalize()+"(){\n"+indent()+"return this."+tmp[-1]+";\n}"
     return generated
 
 def setter(line):
+    mod = ""
+    if "static" in line:
+        mod = "static "
+
     tmp = line.split()
-    tmp[2] = tmp[2].replace(";","")
-    generated = indent()+"public void set"+tmp[2].capitalize()+"("+tmp[1]+" "+tmp[2]+"){\n"+indent()+indent()+"this."+tmp[2]+" = "+tmp[2]+";\n"+indent()+"}"
+    tmp[-1] = tmp[-1].replace(";","")
+    generated = "public "+mod+"void set"+tmp[-1].capitalize()+"("+tmp[-1]+" "+tmp[-1]+"){\n"+indent()+"this."+tmp[-1]+" = "+tmp[-1]+";\n}"
     return generated
 
 if(op == "g"):
+    print("")
     print(getter(code))
 
 elif(op == "s"):
+    print("")
     print(setter(code))
 
 elif(op == "gs"):
+    print("")
     print(getter(code))
     print(setter(code))
 

@@ -1,6 +1,7 @@
 :colorscheme allan
 :set splitright
 :set splitbelow
+:set noai nocin nosi inde= 
 
 function! Nvim()
 	if has("win64") || has("win32") || has("win16")
@@ -89,6 +90,53 @@ function! s:Gt()
 	
 endfunction
 
+function! s:St()
+	let vimp = Nvim().'/python/GetterAndSetter/'
+	let ext = ''.expand('%:e')
+
+	if ext == 'php'
+		let vimp = vimp.'phpGetterAndSetter.py'
+	elseif ext == 'java'
+		let vimp = vimp.'javaGetterAndSetter.py'
+	else
+		let vimp = ''
+	endif
+	
+	if vimp != ''
+		let co = 'python '.vimp.' s "'.getline('.').'"'
+		let exe = 'normal i '.system(co)
+
+		:execute exe
+	endif
+	
+endfunction
+
+function! s:Gs()
+	let vimp = Nvim().'/python/GetterAndSetter/'
+	let ext = ''.expand('%:e')
+
+	if ext == 'php'
+		let vimp = vimp.'phpGetterAndSetter.py'
+	elseif ext == 'java'
+		let vimp = vimp.'javaGetterAndSetter.py'
+	else
+		let vimp = ''
+	endif
+	
+	if vimp != ''
+		let co = 'python '.vimp.' gs "'.getline('.').'"'
+		let exe = 'normal i '.system(co)
+
+		:execute exe
+	endif
+	
+endfunction
+
+function! s:Fs()
+	:tabe %
+endfunction
+
+
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=0 Vp call s:Vp()
@@ -112,6 +160,10 @@ command! -nargs=1 -complete=file Fn call s:Fn(<f-args>)
 command! -nargs=1 -complete=file I call s:I(<f-args>)
 
 command! -nargs=0 Gt call s:Gt()
+command! -nargs=0 St call s:St()
+command! -nargs=0 Gs call s:Gs()
+
+command! -nargs=0 Fs call s:Fs()
 
 
 filetype plugin on
