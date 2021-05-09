@@ -66,6 +66,16 @@ functions = functions.replace("*","")
 functions = functions.replace(" ","")
 functions = functions.replace("$","")
 
+#test
+functions = functions.replace("public","")
+functions = functions.replace("static","")
+functions = functions.replace("void","")
+functions = functions.replace("int","")
+functions = functions.replace("float","")
+functions = functions.replace("bool","")
+functions = functions.replace("string","")
+#
+
 functions = functions.replace(";"," ")
 
 functions = functions[:len(functions) -1]
