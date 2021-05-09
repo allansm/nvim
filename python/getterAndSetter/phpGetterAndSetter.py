@@ -15,18 +15,26 @@ def indent():
     return "    "
 
 def getter(line):
-    tmp = line.split()
-    tmp[1] = tmp[1].replace(";","")
+    mod = ""
+    if "static" in line:
+        mod = "static "
 
-    generated = "public function get"+tmp[1].replace("$","").capitalize()+"(){\n"+indent()+"return $this->"+tmp[1].replace("$","")+";\n}"
+    tmp = line.split()
+    tmp[-1] = tmp[-1].replace(";","")
+
+    generated = "public "+mod+"function get"+tmp[-1].replace("$","").capitalize()+"(){\n"+indent()+"return $this->"+tmp[-1].replace("$","")+";\n}"
     
     return generated
 
 def setter(line):
-    tmp = line.split()
-    tmp[1] = tmp[1].replace(";","")
+    mod = ""
+    if "static" in line:
+        mod = "static "
 
-    generated = "public function set"+tmp[1].replace("$","").capitalize()+"("+tmp[1]+"){\n"+indent()+"$this->"+tmp[1].replace("$","")+" = "+tmp[1]+";\n}"
+    tmp = line.split()
+    tmp[-1] = tmp[-1].replace(";","")
+
+    generated = "public "+mod+"function set"+tmp[-1].replace("$","").capitalize()+"("+tmp[-1]+"){\n"+indent()+"$this->"+tmp[-1].replace("$","")+" = "+tmp[-1]+";\n}"
     
     return generated
 
