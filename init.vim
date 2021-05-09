@@ -2,6 +2,7 @@
 :set splitright
 :set splitbelow
 :set noai nocin nosi inde= 
+:set nopaste
 
 function! Nvim()
 	if has("win64") || has("win32") || has("win16")
@@ -66,7 +67,7 @@ function! s:Fn(fname)
 endfunction
 
 function! s:I(fname)
-	:execute 'normal i ' . a:fname	
+	:execute 'normal i ' . substitute(a:fname,"\\","/","gm")	
 endfunction
 
 function! s:Gt()
