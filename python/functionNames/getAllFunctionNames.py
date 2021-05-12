@@ -19,19 +19,34 @@ import argparse
 parser = argparse.ArgumentParser(description='')
 parser.add_argument("code",type=str)
 parser.add_argument("word",type=str)
+parser.add_argument("ext",type=str)
 
 code = parser.parse_args().code
 match = parser.parse_args().word
-
+ext = parser.parse_args().ext
 
 chdir(code)
 chdir("..")
 
-fold = ls(".","*")
+#fold = ls(".","*")
 
 
 functions = ""
 
+files = getAllFiles(".")
+
+for f in files:
+    fun = ""
+    if("."+ext in getFileName(f)): 
+        try:
+            fun = getFunctions(f,"",";")
+            if(fun != "" or not fun):
+                functions = functions+";"+fun
+        except:
+            dummy = ""
+
+
+'''
 for f in fold:
     fun = ""
 
@@ -54,7 +69,7 @@ for f in fold:
             
         
         chdir("..")
-
+'''
 functions = functions.replace(";","")
 functions = removeBreakLine(functions)
 functions = functions.replace("{",";")

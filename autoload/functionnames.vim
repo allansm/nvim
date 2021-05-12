@@ -12,9 +12,11 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 
 	if line == ''
 		let line = '@'
-	endif	
+	endif
 
-	let co = 'python '.vimp.' . '.line
+	let ext = ''.expand('%:e')
+
+	let co = 'python '.vimp.' . '.line.' '.ext
 	let co2 = 'python '.vimp2.' . '.line
 	let result = system(co)
 	let result2 = system(co2)
