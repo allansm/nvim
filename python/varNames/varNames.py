@@ -21,17 +21,34 @@ import argparse
 parser = argparse.ArgumentParser(description='')
 parser.add_argument("code",type=str)
 parser.add_argument("match",type=str)
+parser.add_argument("ext",type=str)
 
 code = parser.parse_args().code
 match = parser.parse_args().match
+ext = parser.parse_args().ext
 
 chdir(code)
 chdir("..")
 
-fold = ls(".","*")
+#fold = ls(".","*")
 
 variables = ""
 
+files = getAllFiles(".")
+
+for f in files:
+    var = ""
+    if("."+ext in getFileName(f)): 
+        try:
+            var = getVariables(f,"",";")
+            if(var != "" or not var):
+                variables = variables+";"+var
+        except:
+            dummy = ""
+
+
+
+'''
 for f in fold:
     if(os.path.isfile(f)):
         var = getVariables(f,"",";")
@@ -53,7 +70,7 @@ for f in fold:
             
         
         chdir("..")
-
+'''
 arr = variables.split(";")
 arr = list(dict.fromkeys(arr))
 arr2 = []

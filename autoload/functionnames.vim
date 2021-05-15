@@ -17,7 +17,7 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	let ext = ''.expand('%:e')
 
 	let co = 'python '.vimp.' . '.line.' '.ext
-	let co2 = 'python '.vimp2.' . '.line
+	let co2 = 'python '.vimp2.' . '.line.' '.ext
 	let result = system(co)
 	let result2 = system(co2)
 	

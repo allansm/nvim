@@ -28,9 +28,6 @@ ext = parser.parse_args().ext
 chdir(code)
 chdir("..")
 
-#fold = ls(".","*")
-
-
 functions = ""
 
 files = getAllFiles(".")
@@ -46,30 +43,7 @@ for f in files:
             dummy = ""
 
 
-'''
-for f in fold:
-    fun = ""
 
-    if(os.path.isfile(f)):
-        fun = getFunctions(f,"",";")
-        if(fun != "" or not fun):
-            functions = functions+";"+fun
-    else:
-        chdir(f)
-        
-        files = ls(".","*.*")
-
-        for fi in files:
-            try:
-                fun = getFunctions(fi,"",";")
-                if(fun != "" or not fun):
-                    functions = functions+";"+fun
-            except:
-                dummy = ""
-            
-        
-        chdir("..")
-'''
 functions = functions.replace(";","")
 functions = removeBreakLine(functions)
 functions = functions.replace("{",";")
