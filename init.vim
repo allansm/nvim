@@ -137,7 +137,6 @@ function! s:Fs()
 	:tabe %
 endfunction
 
-
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=0 Vp call s:Vp()

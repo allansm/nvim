@@ -78,7 +78,8 @@ i = 0
 arr2 = []
 if(match != "@"):
     for e in arr:
-        if(e.startswith(match)):
+        if(match in e):
+        #if(e.startswith(match)):
             arr2.append(e.replace(match,""))   
         i = i+1
 else:
