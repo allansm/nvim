@@ -10,7 +10,7 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	
 	let line=getline(".")
 
-	if line == ''
+	if trim(line) == ''
 		let line = '@'
 	endif
 
