@@ -1,6 +1,6 @@
 set background=dark
 set nowrap
-set number
+"set number
 set laststatus=0
 :set shortmess+=F
 
