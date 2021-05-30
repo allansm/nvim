@@ -8,8 +8,8 @@ unset($words[0]);
 $line = implode(" ",$words);
 
 try{
-	$memorized = file(__DIR__."/.memorized");
-	
+	$memorized = array_unique(file(__DIR__."/.memorized"));
+		
 	foreach($memorized as $mem){
 		if(str_starts_with($mem,$line)){
 			$mem = str_replace(array("\n", "\r"), '', $mem);
