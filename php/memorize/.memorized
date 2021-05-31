@@ -22,3 +22,9 @@ import java.lang.Process;
 import java.awt.Desktop;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+try{}catch(){}
+try:except:
+if(){}
+if(){}else{}
+if():
+if():else:

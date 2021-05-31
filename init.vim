@@ -48,10 +48,13 @@ endfunction
 
 
 function! s:Mem()
-	let vimp = stdpath("config").'\php\memorize\memorize.php'
-	let command='new term://php '.vimp.' '. getline(".")
-	echo command
-	:execute command
+	let vimp = Nvim().'\php\memorize\memorize.php'
+	"let command='new term://php '.vimp.' '. getline(".")
+	"echo command
+	":execute command
+	
+	:exe system('php '.vimp.' '. getline("."))
+	echo 'memorized : '. getline(".")
 endfunction
 
 function! s:Ac()
