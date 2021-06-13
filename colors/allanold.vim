@@ -21,14 +21,14 @@ hi Identifier cterm=NONE ctermfg=35   	gui=NONE guifg=#ffffff
 "hi Function   cterm=italic ctermfg=46   gui=NONE guifg=#ffffff   	
 
 hi Statement  cterm=NONE ctermfg=34	    gui=bold guifg=#ffffff	     	
-hi PreProc    cterm=NONE ctermfg=46		gui=NONE guifg=#ffffff 	
-hi Type	      cterm=NONE ctermfg=40		gui=bold guifg=#ffffff 		
+hi PreProc    cterm=NONE ctermfg=214		gui=NONE guifg=#ffffff 	
+hi Type	      cterm=NONE ctermfg=226		gui=bold guifg=#ffffff 		
 
 "hi Special    cterm=NONE ctermfg=48    	gui=NONE guifg=#ffffff
 
-hi SpecialChar    cterm=NONE ctermfg=28    	gui=NONE guifg=#ffffff
+hi SpecialChar    cterm=NONE ctermfg=214    	gui=NONE guifg=#ffffff
 hi Tag    cterm=NONE ctermfg=48    	gui=NONE guifg=#ffffff    	
-hi Delimiter  cterm=NONE ctermfg=85   	gui=NONE guifg=#ffffff
+hi Delimiter  cterm=NONE ctermfg=124   	gui=NONE guifg=#ffffff
  
 "hi Parameter  cterm=NONE ctermfg=46		gui=NONE guifg=#ffffff 
 
