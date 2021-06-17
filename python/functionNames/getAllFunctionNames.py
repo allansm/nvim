@@ -26,7 +26,7 @@ match = parser.parse_args().word
 ext = parser.parse_args().ext
 
 chdir(code)
-chdir("..")
+#chdir("..")
 
 functions = ""
 
@@ -55,7 +55,6 @@ functions = functions.replace("*","")
 functions = functions.replace(" ","")
 functions = functions.replace("$","")
 
-#test
 functions = functions.replace("public","")
 functions = functions.replace("static","")
 functions = functions.replace("void","")
@@ -63,7 +62,7 @@ functions = functions.replace("int","")
 functions = functions.replace("float","")
 functions = functions.replace("bool","")
 functions = functions.replace("string","")
-#
+
 
 functions = functions.replace(";"," ")
 
@@ -79,7 +78,6 @@ arr2 = []
 if(match != "@"):
     for e in arr:
         if(match in e):
-        #if(e.startswith(match)):
             arr2.append(e.replace(match,""))   
         i = i+1
 else:

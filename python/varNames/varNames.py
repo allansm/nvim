@@ -28,9 +28,8 @@ match = parser.parse_args().match
 ext = parser.parse_args().ext
 
 chdir(code)
-chdir("..")
+#chdir("..")
 
-#fold = ls(".","*")
 
 variables = ""
 
@@ -48,29 +47,6 @@ for f in files:
 
 
 
-'''
-for f in fold:
-    if(os.path.isfile(f)):
-        var = getVariables(f,"",";")
-        if(var != "" or not var):
-            variables = variables+";"+var
-    else:
-        chdir(f)
-        
-        files = ls(".","*.*")
-
-        for fi in files:
-            try:
-                var = getVariables(fi,"",";")
-                if(var != "" or not var):
-                    variables = variables+";"+var
-            except:
-                dummy = ""
-                print("error")
-            
-        
-        chdir("..")
-'''
 arr = variables.split(";")
 arr = list(dict.fromkeys(arr))
 arr2 = []
