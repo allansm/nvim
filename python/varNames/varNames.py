@@ -28,8 +28,6 @@ match = parser.parse_args().match
 ext = parser.parse_args().ext
 
 chdir(code)
-#chdir("..")
-
 
 variables = ""
 

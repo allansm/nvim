@@ -26,7 +26,6 @@ match = parser.parse_args().word
 ext = parser.parse_args().ext
 
 chdir(code)
-#chdir("..")
 
 functions = ""
 
