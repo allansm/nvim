@@ -42,11 +42,11 @@ def getFunctions(fn,txt,tok):
                     if "/" not in line:
                         if "def " in line:
                             if "(" in line:
-                                functions = functions+tok+txt+line.strip()
+                                functions = functions+tok+txt+line
                         
                         elif "function " in line:
                             if "(" in line:
-                                functions = functions+tok+txt+line.strip()
+                                functions = functions+tok+txt+line
 
                         #elif "function!" in line:
                         #    functions = functions+tok+txt+line.strip()
@@ -57,5 +57,5 @@ def getFunctions(fn,txt,tok):
                                 if "while" not in line:
                                     if "for" not in line:
                                         if "if" not in line:
-                                            functions = functions+tok+txt+line.strip()
+                                            functions = functions+tok+txt+line
     return functions

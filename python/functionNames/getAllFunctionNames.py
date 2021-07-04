@@ -33,7 +33,7 @@ files = getAllFiles(".")
 
 for f in files:
     fun = ""
-    if("."+ext in getFileName(f)): 
+    if("."+ext in getFileName(f) or ext == "cpp"): 
         try:
             fun = getFunctions(f,"",";")
             if(fun != "" or not fun):
@@ -51,16 +51,17 @@ functions = functions.replace("def ","")
 functions = functions.replace("function ","")
 functions = functions.replace("/","")
 functions = functions.replace("*","")
-functions = functions.replace(" ","")
 functions = functions.replace("$","")
 
-functions = functions.replace("public","")
-functions = functions.replace("static","")
-functions = functions.replace("void","")
-functions = functions.replace("int","")
-functions = functions.replace("float","")
-functions = functions.replace("bool","")
-functions = functions.replace("string","")
+functions = functions.replace("public ","")
+functions = functions.replace("static ","")
+functions = functions.replace("void ","")
+functions = functions.replace("int ","")
+functions = functions.replace("float ","")
+functions = functions.replace("bool ","")
+functions = functions.replace("string ","")
+
+functions = functions.replace(" ","")
 
 
 functions = functions.replace(";"," ")
