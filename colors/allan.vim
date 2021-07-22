@@ -2,7 +2,10 @@ set background=dark
 set nowrap
 "set number
 set laststatus=0
-:set shortmess+=F
+set shortmess+=F
+
+set listchars=tab:\|\ 
+"set list
 
 highlight clear
 if exists("syntax_on")
