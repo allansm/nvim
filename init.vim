@@ -46,6 +46,9 @@ function! s:Sh(command)
 	:execute 'new term://' . a:command	
 endfunction
 
+function! s:Shh(command)
+	:exe system(a:command)
+endfunction
 
 function! s:Mem()
 	let vimp = Nvim().'\php\memorize\memorize.php'	
@@ -149,6 +152,7 @@ command! -nargs=1 Hs call s:Hs(<f-args>)
 
 
 command! -nargs=1 -complete=file Sh call s:Sh(<f-args>)
+command! -nargs=1 -complete=file Shh call s:Shh(<f-args>)
 
 command! -nargs=0 Mem call s:Mem()
 
