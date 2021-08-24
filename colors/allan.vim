@@ -6,6 +6,7 @@ set shortmess+=F
 
 set listchars=tab:\|\ 
 "set list
+set noequalalways
 
 highlight clear
 if exists("syntax_on")
