@@ -86,7 +86,7 @@ function! s:Gt()
 	
 	if vimp != ''
 		let co = 'python '.vimp.' g "'.getline('.').'"'
-		let exe = 'normal i '.system(co)
+		let exe = 'normal Gi '.system(co)
 
 		:execute exe
 	endif
@@ -107,7 +107,7 @@ function! s:St()
 	
 	if vimp != ''
 		let co = 'python '.vimp.' s "'.getline('.').'"'
-		let exe = 'normal i '.system(co)
+		let exe = 'normal Gi '.system(co)
 
 		:execute exe
 	endif
@@ -128,7 +128,7 @@ function! s:Gs()
 	
 	if vimp != ''
 		let co = 'python '.vimp.' gs "'.getline('.').'"'
-		let exe = 'normal i '.system(co)
+		let exe = 'normal Gi '.system(co)
 
 		:execute exe
 	endif
@@ -138,6 +138,13 @@ endfunction
 function! s:Fs()
 	:tabe %
 endfunction
+
+function! s:Init()
+	let init = system('echo '.Nvim().'/init.vim')
+	:execute 'e '.init
+endfunction
+
+
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
@@ -168,6 +175,7 @@ command! -nargs=0 Gs call s:Gs()
 
 command! -nargs=0 Fs call s:Fs()
 
+command! -nargs=0 Init call s:Init()
 
 filetype plugin on
 set omnifunc=memorized#AutoComplete
