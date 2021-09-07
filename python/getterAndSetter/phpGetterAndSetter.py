@@ -9,7 +9,8 @@ op = parser.parse_args().op
 
 code = parser.parse_args().code
 
-
+def fn(variable):
+    return variable.replace(variable[0:1],variable[0:1].capitalize(),1)
 
 def indent():
     return "    "
@@ -22,7 +23,7 @@ def getter(line):
     tmp = line.split()
     tmp[-1] = tmp[-1].replace(";","")
 
-    generated = "public "+mod+"function get"+tmp[-1].replace("$","").capitalize()+"(){\n"+indent()+"return $this->"+tmp[-1].replace("$","")+";\n}"
+    generated = "public "+mod+"function get"+fn(tmp[-1].replace("$",""))+"(){\n"+indent()+"return $this->"+tmp[-1].replace("$","")+";\n}"
     
     return generated
 
@@ -34,7 +35,7 @@ def setter(line):
     tmp = line.split()
     tmp[-1] = tmp[-1].replace(";","")
 
-    generated = "public "+mod+"function set"+tmp[-1].replace("$","").capitalize()+"("+tmp[-1]+"){\n"+indent()+"$this->"+tmp[-1].replace("$","")+" = "+tmp[-1]+";\n}"
+    generated = "public "+mod+"function set"+fn(tmp[-1].replace("$",""))+"("+tmp[-1]+"){\n"+indent()+"$this->"+tmp[-1].replace("$","")+" = "+tmp[-1]+";\n}"
     
     return generated
 
