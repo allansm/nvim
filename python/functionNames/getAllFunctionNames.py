@@ -73,12 +73,23 @@ functions = removeBreakLine(functions)
 arr = functions.split()
 arr = list(dict.fromkeys(arr))
 
+if(match[-1] == "("):
+    match = "@"
+
+elif(match[-1] == " "):
+    match = "@"
+
+elif(match[-1] == "="):
+    match = "@"
+
+match = match.split(" ")[-1]
+
 i = 0
 arr2 = []
 if(match != "@"):
     for e in arr:
-        if(match in e):
-            arr2.append(e.replace(match,""))   
+        if(match in e[0:len(match)]):
+            arr2.append(e.replace(match,"",1))   
         i = i+1
 else:
     arr2 = arr

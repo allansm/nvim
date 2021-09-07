@@ -10,18 +10,26 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	
 	let line = getline(".")
 	
-	if line != ''
-		let line = split(line,' ')[-1]
-	endif
+	"if line != ''
+	"	if stridx(line,"(") != -1
+	"		let line = split(line,'(')[-1]
+	"	else
+	"		let line = split(line,' ')[-1]
+	"	endif
+	"endif
 
-	if trim(line) == ''
-		let line = '@'
-	endif
+	"if trim(line) == ''
+	"	let line = '@'
+	"endif
+
+	"if line == '='
+	"	let line = '@'
+	"endif
 
 	let ext = ''.expand('%:e')
 
-	let co = 'python '.vimp.' . '.line.' '.ext
-	let co2 = 'python '.vimp2.' . '.line.' '.ext
+	let co = 'python '.vimp.' . "'.line.'" '.ext
+	let co2 = 'python '.vimp2.' . "'.line.'" '.ext
 	let result = system(co)
 	let result2 = system(co2)
 	
