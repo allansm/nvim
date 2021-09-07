@@ -8,7 +8,11 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	let vimp = nvim.'/python/functionNames/getAllFunctionNames.py'
 	let vimp2 = nvim.'/python/varNames/varNames.py'
 	
-	let line=getline(".")
+	let line = getline(".")
+	
+	if line != ''
+		let line = split(line,' ')[-1]
+	endif
 
 	if trim(line) == ''
 		let line = '@'
