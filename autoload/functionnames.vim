@@ -9,22 +9,10 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 	let vimp2 = nvim.'/python/varNames/varNames.py'
 	
 	let line = getline(".")
-	
-	"if line != ''
-	"	if stridx(line,"(") != -1
-	"		let line = split(line,'(')[-1]
-	"	else
-	"		let line = split(line,' ')[-1]
-	"	endif
-	"endif
-
-	"if trim(line) == ''
-	"	let line = '@'
-	"endif
-
-	"if line == '='
-	"	let line = '@'
-	"endif
+		
+	if trim(line) == ''
+		let line = '@'
+	endif
 
 	let ext = ''.expand('%:e')
 
