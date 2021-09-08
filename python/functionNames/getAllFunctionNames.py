@@ -93,6 +93,10 @@ for i in range(len(match)):
         deli = "("
     elif(match[i] == "="):
         deli = "="
+    elif(match[i] == ","):
+        deli = ","
+    elif(match[i] == "."):
+        deli = "."
 
 if(deli != ""):
     if(deli in match):
