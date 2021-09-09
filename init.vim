@@ -144,7 +144,15 @@ function! s:Init()
 	:execute 'e '.init
 endfunction
 
-
+function! s:Test()
+	let ext = ''.expand('%:e')
+	let co = 'python '.Nvim().'/python/test/test.py '.ext
+	let result = system(co)
+	let result = split(result)
+	for n in result
+		:execute 'setlocal dictionary+='.n
+	endfor
+endfunction
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
@@ -177,6 +185,9 @@ command! -nargs=0 Fs call s:Fs()
 
 command! -nargs=0 Init call s:Init()
 
+command! -nargs=0 Test call s:Test()
+
+"Test
 
 cnoreabbrev init Init
 cnoreabbrev hs Hs
