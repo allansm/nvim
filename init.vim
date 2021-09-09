@@ -177,7 +177,15 @@ command! -nargs=0 Fs call s:Fs()
 
 command! -nargs=0 Init call s:Init()
 
+
+cnoreabbrev init Init
+cnoreabbrev hs Hs
+cnoreabbrev vs Vs
+cnoreabbrev shh Shh
+cnoreabbrev gs Gs
+
 filetype plugin on
 set omnifunc=memorized#AutoComplete
 
-set completefunc=functionnames#GetAllFunctionNames 
+set completefunc=functionnames#GetAllFunctionNames
+setlocal complete+=k
