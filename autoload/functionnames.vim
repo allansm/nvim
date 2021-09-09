@@ -16,13 +16,14 @@ function! functionnames#GetAllFunctionNames(findstart, base)
 
 	let ext = ''.expand('%:e')
 
-	let co = 'python '.vimp.' . "'.line.'" '.ext
+	let co = 'python '.vimp.' . "'.line.'" "'.ext.'"'
 	let co2 = 'python '.vimp2.' . "'.line.'" '.ext
 	let result = system(co)
-	let result2 = system(co2)
+	let result2 = '' "system(co2)
 	
 	if result2 != ''
 		let result = result.' '.result2
+	endif
 
 	let result = split(result)
 	

@@ -1,6 +1,4 @@
-import sys
-
-sys.path.append("..\\functions\\")
+import dependency
 
 from fileHandle import *
 from os import chdir
