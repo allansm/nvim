@@ -28,6 +28,6 @@ try:
 
     lamb = lambda a,b=ext,c=start,d=noexit : fun(a,b,c,d)
 
-    getAllFiles(".",lamb)
+    getAllFilesPath(".",lamb)
 except:
     dummy=""
