@@ -150,7 +150,7 @@ function! s:ToInit()
 endfunction
 
 
-function! s:Test()
+function! s:AutoComplete()
 	let ext = ''.expand('%:e')
 	let co = 'python '.Nvim().'/python/test/test.py --ext "'.ext.'"'
 	let result = system(co)
@@ -159,6 +159,17 @@ function! s:Test()
 		:execute 'setlocal dictionary+='.n
 	endfor
 endfunction
+
+function! s:FullAutoComplete()
+	let ext = ''.expand('%:e')
+	let co = 'python '.Nvim().'/python/test/test.py --ext "'.ext.'" --noexit'
+	let result = system(co)
+	let result = split(result)
+	for n in result
+		:execute 'setlocal dictionary+='.n
+	endfor
+endfunction
+
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
@@ -192,9 +203,10 @@ command! -nargs=0 Fs call s:Fs()
 command! -nargs=0 Init call s:Init()
 command! -nargs=0 ToInit call s:ToInit()
 
-command! -nargs=0 Test call s:Test()
+command! -nargs=0 AutoComplete call s:AutoComplete()
+command! -nargs=0 FullAutoComplete call s:FullAutoComplete()
 
-Test
+AutoComplete
 
 cnoreabbrev init Init
 cnoreabbrev toinit ToInit
@@ -202,6 +214,7 @@ cnoreabbrev hs Hs
 cnoreabbrev vs Vs
 cnoreabbrev shh Shh
 cnoreabbrev gs Gs
+cnoreabbrev fac FullAutoComplete
 
 filetype plugin on
 set omnifunc=memorized#AutoComplete

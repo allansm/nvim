@@ -1,36 +1,33 @@
-import dependency
+try:
+    import dependency
 
-from fileHandle import *
-from argsHandle import *
+    from fileHandle import *
+    from argsHandle import *
 
-from time import time
+    from time import time
+    
+    def fun(f,ext,start,noexit=None):
+        if("." in f):
+            if(f.split(".")[-1] == ext):
+                print(f)
+                t = (time()-start)
+                
+                if(t > 10):
+                    if(noexit == None or noexit == False):
+                        exit()
 
-ext = getArgs(["--ext"]).ext
+    args = getArgs(["--ext","?noexit"])
+    
+    ext = args.ext
+    noexit = args.noexit
 
-if(ext == "" or ext == None):
-    exit()
+    if(ext == "" or ext == None):
+        exit()
+ 
+    start = time()
 
-'''
-start = time()
+    lamb = lambda a,b=ext,c=start,d=noexit : fun(a,b,c,d)
 
-for f in files:
-    if("." in f):
-        if(f.split(".")[-1] == ext):
-            print(f)
-            if((time()-start) > 30):
-                exit()
-'''
-def fun(f,ext,start):
-    if("." in f):
-        if(f.split(".")[-1] == ext):
-            print(f)
-            t = (time()-start)
-            #print(t)
-            if(t > 10):
-                exit()
-
-start = time()
-
-lamb = lambda a,b=ext,c=start : fun(a,b,c)
-
-getAllFiles(".",lamb)
+    getAllFiles(".",lamb)
+except:
+    dummy=""
