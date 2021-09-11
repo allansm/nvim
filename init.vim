@@ -149,11 +149,13 @@ function! s:ToInit()
 	:execute 'cd '.init
 endfunction
 
+let g:dict = ""
 
 function! s:AutoComplete()
 	let ext = ''.expand('%:e')
 	let co = 'python '.Nvim().'/python/autocomplete/autocomplete.py --ext "'.ext.'"'
 	let result = system(co)
+	let g:dict = g:dict.result
 	let result = split(result)
 	for n in result
 		:execute 'setlocal dictionary+='.n
@@ -165,8 +167,17 @@ function! s:FullAutoComplete()
 	let ext = ''.expand('%:e')
 	let co = 'python '.Nvim().'/python/autocomplete/autocomplete.py --ext "'.ext.'" --noexit'
 	let result = system(co)
-	let result = split(result)
-	echo result	
+	let g:dict = g:dict.result
+	let result = split(result)	
+	for n in result
+		:execute 'setlocal dictionary+='.n
+	endfor
+	setlocal complete+=k 
+endfunction
+
+function! s:Test()
+	let ext = ''.expand('%:e')
+	let result = split(g:dict)
 	for n in result
 		:execute 'setlocal dictionary+='.n
 	endfor
@@ -216,6 +227,8 @@ command! -nargs=0 AutoComplete call s:AutoComplete()
 command! -nargs=0 FullAutoComplete call s:FullAutoComplete()
 
 command! -nargs=0 RefreshInit call s:RefreshInit()
+
+command! -nargs=0 Test call s:Test()
 
 AutoComplete
 
