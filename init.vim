@@ -210,7 +210,7 @@ function! s:AutoCompleteVNew(fname)
 	UseDict
 endfunction
 
-function! s:Test()
+function! s:Preference()
 	:vnew
 	:terminal
 	:new
@@ -226,6 +226,15 @@ function! s:Test()
 	:new
 	:terminal
 	:Hs-11
+	:wincmd w
+	:wincmd w
+	:wincmd w
+	:wincmd w
+	:wincmd w
+endfunction
+
+function! s:CloseAll()
+	:bufdo bwipeout!
 endfunction
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
@@ -271,7 +280,8 @@ command! -nargs=0 UseDict call s:UseDict()
 command! -nargs=1 -complete=file AutoCompleteNew call s:AutoCompleteNew(<f-args>)
 command! -nargs=1 -complete=file AutoCompleteVNew call s:AutoCompleteVNew(<f-args>)
 
-command! -nargs=0 Test call s:Test()
+command! -nargs=0 Preference call s:Preference()
+command! -nargs=0 CloseAll call s:CloseAll()
 
 GetDict
 UseDict
@@ -292,6 +302,8 @@ cnoreabbrev refresh RefreshInit
 
 cnoreabbrev na AutoCompleteNew
 cnoreabbrev vna AutoCompleteVNew
+
+cnoreabbrev pref Preference
 
 filetype plugin on
 set omnifunc=memorized#AutoComplete
