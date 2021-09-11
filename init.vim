@@ -4,6 +4,8 @@
 :set noai nocin nosi inde= 
 :set nopaste
 
+let g:dict = ""
+
 function! Nvim()
 	if has("win64") || has("win32") || has("win16")
 		let nvim = '%userprofile%/appdata/local/nvim'
@@ -149,8 +151,6 @@ function! s:ToInit()
 	:execute 'cd '.init
 endfunction
 
-let g:dict = ""
-
 function! s:AutoComplete()
 	let ext = ''.expand('%:e')
 	let co = 'python '.Nvim().'/python/autocomplete/autocomplete.py --ext "'.ext.'"'
@@ -175,11 +175,13 @@ function! s:FullAutoComplete()
 	setlocal complete+=k 
 endfunction
 
-function! s:Test()
-	let ext = ''.expand('%:e')
+function! s:UseDict()
+	let ext = '.'.expand('%:e')
 	let result = split(g:dict)
 	for n in result
-		:execute 'setlocal dictionary+='.n
+		if(stridx(n,ext) != -1)
+			:execute 'setlocal dictionary+='.n
+		endif
 	endfor
 	setlocal complete+=k
 endfunction
@@ -188,8 +190,27 @@ function! s:RefreshInit()
 	let init = Nvim().'/init.vim'
 	let path = system('echo '.init)
 	let co = 'source '.path
-	:execute co
+	:silent! execute co
 endfunction
+
+function! s:GetDict()	
+	let co = 'python '.Nvim().'/python/autocomplete/getAll.py'
+	let result = system(co)
+	let g:dict = g:dict.result	
+endfunction
+
+
+function! s:AutoCompleteNew(fname)
+	:execute 'new '. a:fname
+	UseDict
+endfunction
+
+function! s:AutoCompleteVNew(fname)
+	:execute 'vnew '. a:fname
+	UseDict
+endfunction
+
+
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
@@ -225,22 +246,33 @@ command! -nargs=0 ToInit call s:ToInit()
 
 command! -nargs=0 AutoComplete call s:AutoComplete()
 command! -nargs=0 FullAutoComplete call s:FullAutoComplete()
+command! -nargs=0 GetDict call s:GetDict()
 
 command! -nargs=0 RefreshInit call s:RefreshInit()
 
-command! -nargs=0 Test call s:Test()
+command! -nargs=0 UseDict call s:UseDict()
 
-AutoComplete
+command! -nargs=1 -complete=file AutoCompleteNew call s:AutoCompleteNew(<f-args>)
+command! -nargs=1 -complete=file AutoCompleteVNew call s:AutoCompleteVNew(<f-args>)
+
+GetDict
 
 cnoreabbrev init Init
 cnoreabbrev toinit ToInit
+
 cnoreabbrev hs Hs
 cnoreabbrev vs Vs
+
 cnoreabbrev shh Shh
+
 cnoreabbrev gs Gs
 cnoreabbrev ac AutoComplete
 cnoreabbrev fac FullAutoComplete
+
 cnoreabbrev refresh RefreshInit
+
+cnoreabbrev na AutoCompleteNew
+cnoreabbrev vna AutoCompleteVNew
 
 filetype plugin on
 set omnifunc=memorized#AutoComplete
