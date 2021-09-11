@@ -210,7 +210,23 @@ function! s:AutoCompleteVNew(fname)
 	UseDict
 endfunction
 
-
+function! s:Test()
+	:vnew
+	:terminal
+	:new
+	:terminal
+	:Hs+8
+	:Vs-28
+	:new
+	:terminal
+	:vnew
+	:Hs-8
+	:terminal
+	:wincmd w
+	:new
+	:terminal
+	:Hs-11
+endfunction
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
@@ -255,7 +271,10 @@ command! -nargs=0 UseDict call s:UseDict()
 command! -nargs=1 -complete=file AutoCompleteNew call s:AutoCompleteNew(<f-args>)
 command! -nargs=1 -complete=file AutoCompleteVNew call s:AutoCompleteVNew(<f-args>)
 
+command! -nargs=0 Test call s:Test()
+
 GetDict
+UseDict
 
 cnoreabbrev init Init
 cnoreabbrev toinit ToInit

@@ -11,7 +11,7 @@ try:
             print(f)
             t = (time()-start)
             
-            if(t > 15):
+            if(t > 10):
                 if(noexit == None or noexit == False):
                     exit()
 
