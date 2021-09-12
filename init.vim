@@ -199,6 +199,12 @@ function! s:GetDict()
 	let g:dict = g:dict.result	
 endfunction
 
+function! s:GetFullDict()	
+	let co = 'python '.Nvim().'/python/autocomplete/getAll.py --noexit'
+	let result = system(co)
+	let g:dict = g:dict.result	
+endfunction
+
 
 function! s:AutoCompleteNew(fname)
 	:execute 'new '. a:fname
@@ -277,6 +283,7 @@ command! -nargs=0 ToInit call s:ToInit()
 command! -nargs=0 AutoComplete call s:AutoComplete()
 command! -nargs=0 FullAutoComplete call s:FullAutoComplete()
 command! -nargs=0 GetDict call s:GetDict()
+command! -nargs=0 GetFullDict call s:GetFullDict()
 
 command! -nargs=0 RefreshInit call s:RefreshInit()
 
@@ -303,6 +310,7 @@ cnoreabbrev shh Shh
 cnoreabbrev gs Gs
 cnoreabbrev ac AutoComplete
 cnoreabbrev fac FullAutoComplete
+cnoreabbrev fd GetFullDict
 
 cnoreabbrev refresh RefreshInit
 

@@ -15,9 +15,11 @@ try:
                 if(noexit == None or noexit == False):
                     exit()
 
+    noexit = getArgs(["?noexit"]).noexit
+
     start = time()
 
-    lamb = lambda a,c=start: fun(a,c)
+    lamb = lambda a,b=start,c=noexit : fun(a,b)
 
     getAllFilesPath(".",lamb)
 except:
