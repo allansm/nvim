@@ -210,6 +210,11 @@ function! s:AutoCompleteVNew(fname)
 	UseDict
 endfunction
 
+function! s:AutoCompleteModify(fname)
+	:execute 'e '. a:fname
+	UseDict
+endfunction
+
 function! s:Preference()
 	:vnew
 	:terminal
@@ -279,12 +284,13 @@ command! -nargs=0 UseDict call s:UseDict()
 
 command! -nargs=1 -complete=file AutoCompleteNew call s:AutoCompleteNew(<f-args>)
 command! -nargs=1 -complete=file AutoCompleteVNew call s:AutoCompleteVNew(<f-args>)
+command! -nargs=1 -complete=file AutoCompleteModify call s:AutoCompleteModify(<f-args>)
 
 command! -nargs=0 Preference call s:Preference()
 command! -nargs=0 CloseAll call s:CloseAll()
 
 GetDict
-UseDict
+:silent! UseDict
 
 cnoreabbrev init Init
 cnoreabbrev toinit ToInit
@@ -302,6 +308,7 @@ cnoreabbrev refresh RefreshInit
 
 cnoreabbrev na AutoCompleteNew
 cnoreabbrev vna AutoCompleteVNew
+cnoreabbrev ma AutoCompleteModify
 
 cnoreabbrev pref Preference
 
