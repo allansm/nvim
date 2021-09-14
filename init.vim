@@ -137,6 +137,15 @@ function! s:Gs()
 	
 endfunction
 
+function! s:Test()
+	let fn = bufname()
+	let vimp = Nvim().'/python/GetterAndSetter/test.py'
+	let co = 'python '.vimp.' '.fn
+	let exe = 'normal Gi '.system(co)
+
+	:execute exe
+endfunction
+
 function! s:Fs()
 	:tabe %
 endfunction
@@ -295,6 +304,8 @@ command! -nargs=1 -complete=file AutoCompleteModify call s:AutoCompleteModify(<f
 
 command! -nargs=0 Preference call s:Preference()
 command! -nargs=0 CloseAll call s:CloseAll()
+
+command! -nargs=0 Test call s:Test()
 
 GetDict
 :silent! UseDict
