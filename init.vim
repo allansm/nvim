@@ -116,30 +116,30 @@ function! s:St()
 	
 endfunction
 
+"" function! s:Gs()
+""	let vimp = Nvim().'/python/GetterAndSetter/'
+""	let ext = ''.expand('%:e')
+
+"	if ext == 'php'
+"		let vimp = vimp.'phpGetterAndSetter.py'
+"	elseif ext == 'java'
+"		let vimp = vimp.'javaGetterAndSetter.py'
+"	else
+"		let vimp = ''
+"	endif
+	
+"	if vimp != ''
+"		let co = 'python '.vimp.' gs "'.getline('.').'"'
+"		let exe = 'normal Gi '.system(co)
+
+"		:execute exe
+"	endif
+	
+"endfunction
+
 function! s:Gs()
-	let vimp = Nvim().'/python/GetterAndSetter/'
-	let ext = ''.expand('%:e')
-
-	if ext == 'php'
-		let vimp = vimp.'phpGetterAndSetter.py'
-	elseif ext == 'java'
-		let vimp = vimp.'javaGetterAndSetter.py'
-	else
-		let vimp = ''
-	endif
-	
-	if vimp != ''
-		let co = 'python '.vimp.' gs "'.getline('.').'"'
-		let exe = 'normal Gi '.system(co)
-
-		:execute exe
-	endif
-	
-endfunction
-
-function! s:Test()
 	let fn = bufname()
-	let vimp = Nvim().'/python/GetterAndSetter/test.py'
+	let vimp = Nvim().'/python/GetterAndSetter/getterAndSetter.py'
 	let co = 'python '.vimp.' '.fn
 	let exe = 'normal Gi '.system(co)
 
@@ -305,7 +305,7 @@ command! -nargs=1 -complete=file AutoCompleteModify call s:AutoCompleteModify(<f
 command! -nargs=0 Preference call s:Preference()
 command! -nargs=0 CloseAll call s:CloseAll()
 
-command! -nargs=0 Test call s:Test()
+"command! -nargs=0 Test call s:Test()
 
 GetDict
 :silent! UseDict
