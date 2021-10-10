@@ -278,5 +278,5 @@ filetype plugin on
 set completefunc=functionnames#GetAllFunctionNames
 setlocal complete+=k
 
-:imap <C-a> <esc>:set omnifunc=memorized#AutoComplete<CR><insert><C-X><C-O>
+:imap <C-m> <esc>:set omnifunc=memorized#AutoComplete<CR><insert><C-X><C-O>
 :imap <C-p> <esc>:set omnifunc=package#Package<CR><insert><C-X><C-O>
