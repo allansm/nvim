@@ -248,7 +248,6 @@ command! -nargs=0 CloseAll call s:CloseAll()
 
 "command! -nargs=0 Test call s:Test()
 
-GetDict
 :silent! UseDict
 
 cnoreabbrev init Init
@@ -273,10 +272,11 @@ cnoreabbrev ma AutoCompleteModify
 cnoreabbrev pref Preference
 
 filetype plugin on
-"set omnifunc=memorized#AutoComplete
 
 set completefunc=functionnames#GetAllFunctionNames
 setlocal complete+=k
 
-:imap <C-m> <esc>:set omnifunc=memorized#AutoComplete<CR><insert><C-X><C-O>
+:imap <C-a> <esc>:set omnifunc=memorized#AutoComplete<CR><insert><C-X><C-O>
 :imap <C-p> <esc>:set omnifunc=package#Package<CR><insert><C-X><C-O>
+:imap <C-g><C-u> <esc>:GetDict<CR>:UseDict<CR><insert><C-N>
+:imap <C-u> <esc>:UseDict<CR><insert><C-N>
