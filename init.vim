@@ -214,6 +214,12 @@ function! s:AddPackage()
 	let result = system(co)
 endfunction
 
+function! s:Packages()
+	let ext = ''.expand('%:e')
+	let path = system('echo '.Nvim().'/python/package/'.ext.'.config')
+	:execute 'e '.path
+endfunction
+
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=1 Vs call s:Vs(<f-args>)
@@ -253,7 +259,7 @@ command! -nargs=0 Preference call s:Preference()
 command! -nargs=0 CloseAll call s:CloseAll()
 
 command! -nargs=0 AddPackage call s:AddPackage()
-
+command! -nargs=0 Packages call s:Packages()
 "command! -nargs=0 Test call s:Test()
 
 :silent! UseDict
