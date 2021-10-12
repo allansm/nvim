@@ -4,7 +4,7 @@ function! package#Package(findstart,base)
 	else
 		let nvim = '~/.config/nvim'
 	endif
-	let vimp = nvim.'/python/package/test.py'
+	let vimp = nvim.'/python/package/getPackage.py'
 	
 	let ext = ''.expand('%:e')
 

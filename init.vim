@@ -208,6 +208,12 @@ function! s:CloseAll()
 	:bufdo bwipeout!
 endfunction
 
+function! s:AddPackage()
+	let ext = ''.expand('%:e')
+	let co = 'python '.Nvim().'/python/package/addPackage.py '.ext.' "'.getline('.').'"'
+	let result = system(co)
+endfunction
+
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=1 Vs call s:Vs(<f-args>)
@@ -245,6 +251,8 @@ command! -nargs=1 -complete=file AutoCompleteModify call s:AutoCompleteModify(<f
 
 command! -nargs=0 Preference call s:Preference()
 command! -nargs=0 CloseAll call s:CloseAll()
+
+command! -nargs=0 AddPackage call s:AddPackage()
 
 "command! -nargs=0 Test call s:Test()
 
