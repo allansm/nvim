@@ -168,16 +168,22 @@ endfunction
 
 function! s:AutoCompleteNew(fname)
 	:execute 'new '. a:fname
+	let ffn = system('echo '.expand('%:p'))
+	let g:dict = g:dict.ffn
 	UseDict
 endfunction
 
 function! s:AutoCompleteVNew(fname)
 	:execute 'vnew '. a:fname
+	let ffn = system('echo '.expand('%:p'))
+	let g:dict = g:dict.ffn
 	UseDict
 endfunction
 
 function! s:AutoCompleteModify(fname)
 	:execute 'e '. a:fname
+	let ffn = system('echo '.expand('%:p'))
+	let g:dict = g:dict.ffn
 	UseDict
 endfunction
 
@@ -294,3 +300,4 @@ setlocal complete+=k
 :imap <C-p> <esc>:set omnifunc=package#Package<CR><insert><C-X><C-O>
 :imap <C-g><C-u> <esc>:GetDict<CR>:UseDict<CR><insert><C-N>
 :imap <C-u> <esc>:UseDict<CR><insert><C-N>
+:imap <C-d> <esc>:set omnifunc=common#ShowDict<CR><insert><C-X><C-O>
