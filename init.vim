@@ -169,21 +169,57 @@ endfunction
 function! s:AutoCompleteNew(fname)
 	:execute 'new '. a:fname
 	let ffn = system('echo '.expand('%:p'))
-	let g:dict = g:dict.ffn
+	
+	let flag = 1
+	let result = split(g:dict)
+	for n in result
+		if(stridx(ffn,n) != -1)
+			let flag = 0
+		endif
+	endfor
+
+	if(flag == 1)
+		let g:dict = g:dict.ffn
+	endif
+
 	UseDict
 endfunction
 
 function! s:AutoCompleteVNew(fname)
 	:execute 'vnew '. a:fname
 	let ffn = system('echo '.expand('%:p'))
-	let g:dict = g:dict.ffn
+
+	let flag = 1
+	let result = split(g:dict)
+	for n in result
+		if(stridx(ffn,n) != -1)
+			let flag = 0	
+		endif
+	endfor
+
+	if(flag == 1)
+		let g:dict = g:dict.ffn
+	endif
+
 	UseDict
 endfunction
 
 function! s:AutoCompleteModify(fname)
 	:execute 'e '. a:fname
 	let ffn = system('echo '.expand('%:p'))
-	let g:dict = g:dict.ffn
+
+	let flag = 1
+	let result = split(g:dict)
+	for n in result
+		if(stridx(ffn,n) != -1)
+			let flag = 0	
+		endif
+	endfor
+
+	if(flag == 1)
+		let g:dict = g:dict.ffn
+	endif
+
 	UseDict
 endfunction
 
