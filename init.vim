@@ -262,6 +262,13 @@ function! s:Packages()
 	:execute 'e '.path
 endfunction
 
+function! s:ToFile()
+	let dn = ''.expand('%:p:h')
+	:execute 'cd '.dn
+	pwd
+endfunction
+
+
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=1 Vs call s:Vs(<f-args>)
@@ -302,6 +309,8 @@ command! -nargs=0 CloseAll call s:CloseAll()
 
 command! -nargs=0 AddPackage call s:AddPackage()
 command! -nargs=0 Packages call s:Packages()
+
+command! -nargs=0 ToFile call s:ToFile()
 "command! -nargs=0 Test call s:Test()
 
 :silent! UseDict
@@ -326,6 +335,8 @@ cnoreabbrev vna AutoCompleteVNew
 cnoreabbrev ma AutoCompleteModify
 
 cnoreabbrev pref Preference
+
+cnoreabbrev cdf ToFile
 
 filetype plugin on
 
