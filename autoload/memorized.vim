@@ -4,14 +4,9 @@ function! memorized#AutoComplete(findstart, base)
 	else
 		let nvim = '~/.config/nvim'
 	endif
-	let vimp = nvim.'/php/memorize/autoComplete.php'
-	let line=getline(".")
+	let vimp = nvim.'/php/memorize/autoComplete.php'	
 
-	if line == ''
-		let line = "@"
-	endif
-
-	let co = 'php '.vimp.' '.line
+	let co = 'php '.vimp.' @'
 	
 	let result = system(co)
 
