@@ -264,6 +264,9 @@ endfunction
 
 function! s:ToFile()
 	let dn = ''.expand('%:p:h')
+	let co = 'python '.Nvim().'/python/writer/write.py '.Nvim().'/.current '.dn 
+	"echo co
+	let res = system(co)	
 	:execute 'cd '.dn
 	pwd
 endfunction
