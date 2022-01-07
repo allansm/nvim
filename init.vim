@@ -271,6 +271,15 @@ function! s:ToFile()
 	pwd
 endfunction
 
+function! s:Nterminal()
+	:new
+	:terminal
+endfunction
+
+function! s:Vterminal()
+	:vnew
+	:terminal
+endfunction
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
@@ -314,6 +323,10 @@ command! -nargs=0 AddPackage call s:AddPackage()
 command! -nargs=0 Packages call s:Packages()
 
 command! -nargs=0 ToFile call s:ToFile()
+
+command! -nargs=0 Nterminal call s:Nterminal()
+command! -nargs=0 Vterminal call s:Vterminal()
+
 "command! -nargs=0 Test call s:Test()
 
 :silent! UseDict
@@ -340,6 +353,9 @@ cnoreabbrev ma AutoCompleteModify
 cnoreabbrev pref Preference
 
 cnoreabbrev cdf ToFile
+
+cnoreabbrev vterm Vterminal
+cnoreabbrev nterm Nterminal
 
 filetype plugin on
 
