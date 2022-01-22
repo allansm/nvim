@@ -1,3 +1,5 @@
+" require path variable XDG_CONFIG_HOME
+
 :colorscheme allan
 :set splitright
 :set splitbelow
@@ -7,13 +9,7 @@
 let g:dict = ""
 
 function! Nvim()
-	if has("win64") || has("win32") || has("win16")
-		let nvim = '%userprofile%/appdata/local/nvim'
-	else
-		let nvim = '~/.config/nvim'
-	endif
-
-	return nvim
+	return stdpath('config')
 endfunction
 
 function! s:Exec(command)
