@@ -242,6 +242,13 @@ function! s:Preference()
 	:wincmd w
 endfunction
 
+function! s:Preference2() 
+	:execute "vnew ".Nvim()."/.1"
+	:execute "new ".Nvim()."/.2"
+	:Hs+7
+	:Vs-28
+endfunction
+
 function! s:CloseAll()
 	:bufdo bwipeout!
 endfunction
@@ -313,6 +320,7 @@ command! -nargs=1 -complete=file AutoCompleteVNew call s:AutoCompleteVNew(<f-arg
 command! -nargs=1 -complete=file AutoCompleteModify call s:AutoCompleteModify(<f-args>)
 
 command! -nargs=0 Preference call s:Preference()
+command! -nargs=0 Preference2 call s:Preference2()
 command! -nargs=0 CloseAll call s:CloseAll()
 
 command! -nargs=0 AddPackage call s:AddPackage()
@@ -347,6 +355,7 @@ cnoreabbrev vna AutoCompleteVNew
 cnoreabbrev ma AutoCompleteModify
 
 cnoreabbrev pref Preference
+cnoreabbrev pref2 Preference2
 
 cnoreabbrev cdf ToFile
 
