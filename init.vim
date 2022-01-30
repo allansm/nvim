@@ -247,6 +247,7 @@ function! s:Preference2()
 	:execute "new ".Nvim()."/.2"
 	:Hs+7
 	:Vs-28
+	:wincmd w
 endfunction
 
 function! s:CloseAll()
@@ -282,6 +283,11 @@ endfunction
 function! s:Vterminal()
 	:vnew
 	:terminal
+endfunction
+
+function! s:Fs2()
+	:Fs
+	:Preference2
 endfunction
 
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
@@ -330,6 +336,7 @@ command! -nargs=0 ToFile call s:ToFile()
 
 command! -nargs=0 Nterminal call s:Nterminal()
 command! -nargs=0 Vterminal call s:Vterminal()
+command! -nargs=0 Fs2 call s:Fs2()
 
 "command! -nargs=0 Test call s:Test()
 
