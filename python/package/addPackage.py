@@ -1,11 +1,20 @@
-import dependency
+from os.path import dirname,realpath
 
-from fileHandle import *
-from argsHandle import *
+def getArgs():
+    import argparse
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("ext")
+    parser.add_argument("txt")
+    
+    return parser.parse_args()
 
-
-args = getArgs(["ext","txt"])
+args = getArgs()
 ext = args.ext
 ext = ext.replace(".","")
 
-writeFile(selfLocation(__file__)+"/"+ext+".config",args.txt+"\n")
+config = dirname(realpath(__file__))+"/"+ext+".config"
+
+f = open(config,"a")
+f.write(args.txt+"\n")
+f.close()

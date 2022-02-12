@@ -1,12 +1,23 @@
-import dependency
+from os.path import dirname,realpath
+def getLines(fname):
+    f = open(fname,"r")
+    tmp = f.read()
+    f.close()
 
-from fileHandle import *
-from argsHandle import *
+    return tmp.split("\n")
 
-ext = getArgs(["ext"]).ext
+def getArgs():
+    import argparse
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("ext")
+    
+    return parser.parse_args()
+
+ext = getArgs().ext
 ext = ext.replace(".","")
 
-lines = getLines(selfLocation(__file__)+"/"+ext+".config")
+lines = getLines(dirname(realpath(__file__))+"/"+ext+".config")
 
 res = ""
 flag = False

@@ -1,11 +1,29 @@
-try:
-    import dependency
+from time import time
 
-    from fileHandle import *
-    from argsHandle import *
+def getAllFilesPath(path,lamb=None):
+    import os
 
-    from time import time
+    fold = os.walk(path)
+    ret = []
+    for root, dirs, files in fold:
+        for name in files:
+            if(lamb != None):
+                lamb(os.path.realpath(os.path.join(root, name)))
+
+            ret.append(os.path.realpath(os.path.join(root, name)))
+
+    return ret
+
+def getArgs():
+    import argparse
     
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--ext",required=False,dest="ext")
+    parser.add_argument("--noexit",action="store_true",desst="noexit")
+    
+    return parser.parse_args()
+
+try:    
     def fun(f,ext,start,noexit=None):
         if("." in f):
             if(f.split(".")[-1] == ext):
@@ -14,10 +32,9 @@ try:
                 
                 if(t > 10):
                     if(noexit == None or noexit == False):
-                        exit()
+                        exit()    
+    args = getArgs()
 
-    args = getArgs(["--ext","?noexit"])
-    
     ext = args.ext
     noexit = args.noexit
 
