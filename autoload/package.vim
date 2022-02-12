@@ -1,9 +1,5 @@
 function! package#Package(findstart,base)
-	if has("win64") || has("win32") || has("win16")
-		let nvim = '%userprofile%/appdata/local/nvim'
-	else
-		let nvim = '~/.config/nvim'
-	endif
+	let nvim = stdpath('config')
 	let vimp = nvim.'/python/package/getPackage.py'
 	
 	let ext = ''.expand('%:e')
