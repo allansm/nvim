@@ -269,6 +269,11 @@ function! s:ToFile()
 	pwd
 endfunction
 
+function! s:Memorized()
+	let fn = system('echo '.Nvim().'/python/memorize/.memorized')
+	:execute 'e '.fn
+endfunction
+
 function! s:Nterminal()
 	:new
 	:terminal
@@ -325,6 +330,8 @@ command! -nargs=0 AddPackage call s:AddPackage()
 command! -nargs=0 Packages call s:Packages()
 
 command! -nargs=0 ToFile call s:ToFile()
+
+command! -nargs=0 Memorized call s:Memorized()
 
 command! -nargs=0 Nterminal call s:Nterminal()
 command! -nargs=0 Vterminal call s:Vterminal()

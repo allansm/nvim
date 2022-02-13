@@ -1,8 +1,8 @@
 function! memorized#AutoComplete(findstart, base)
 	let nvim = stdpath('config')
-	let vimp = nvim.'/php/memorize/autoComplete.php'	
+	let vimp = nvim.'/python/memorize/memorized.py'	
 
-	let co = 'php '.vimp.' @'
+	let co = 'python '.vimp
 	
 	let result = system(co)
 
