@@ -1,12 +1,23 @@
-import dependency
-
-from fileHandle import *
-from argsHandle import *
-
 import java
 import php
 
-fn = getArgs(["filename"]).filename
+def getLines(fname):
+    f = open(fname,"r")
+    tmp = f.read()
+    f.close()
+
+    return tmp.split("\n")
+
+
+def getArgs():
+    import argparse
+    
+    parser = argparse.ArgumentParser()
+    parser.add_argument("filename")
+    
+    return parser.parse_args()
+
+fn = getArgs().filename
 
 lines = getLines(fn)
 

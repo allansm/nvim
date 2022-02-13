@@ -32,12 +32,6 @@ function! s:Shh(command)
 	:exe system(a:command)
 endfunction
 
-function! s:Mem()
-	let vimp = Nvim().'\php\memorize\memorize.php'	
-	:exe system('php '.vimp.' '. getline("."))
-	echo 'memorized : '. getline(".")
-endfunction
-
 function! s:I(fname)
 	:execute 'normal i ' . substitute(a:fname,"\\","/","gm")	
 endfunction
@@ -299,8 +293,6 @@ command! -nargs=1 Hs call s:Hs(<f-args>)
 command! -nargs=1 -complete=file Sh call s:Sh(<f-args>)
 command! -nargs=1 -complete=file Shh call s:Shh(<f-args>)
 
-command! -nargs=0 Mem call s:Mem()
-
 command! -nargs=1 -complete=file I call s:I(<f-args>)
 
 command! -nargs=0 Gt call s:Gt()
@@ -370,9 +362,6 @@ cnoreabbrev vterm Vterminal
 cnoreabbrev nterm Nterminal
 
 filetype plugin on
-
-set completefunc=functionnames#GetAllFunctionNames
-setlocal complete+=k
 
 :imap <C-a> <esc>:set omnifunc=memorized#AutoComplete<CR><insert><C-X><C-O>
 :imap <C-p> <esc>:set omnifunc=package#Package<CR><insert><C-X><C-O>
