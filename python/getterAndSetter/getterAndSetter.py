@@ -17,29 +17,32 @@ def getArgs():
     
     return parser.parse_args()
 
-fn = getArgs().filename
+try:
+    fn = getArgs().filename
 
-lines = getLines(fn)
+    lines = getLines(fn)
 
-variables = []
+    variables = []
 
-for line in lines:
-    if("public " in line):
-        if(";" in line):
-            variables.append(line)
-    elif("private "in line):
-        if(";" in line):
-            variables.append(line)
+    for line in lines:
+        if("public " in line):
+            if(";" in line):
+                variables.append(line)
+        elif("private "in line):
+            if(";" in line):
+                variables.append(line)
 
-for var in variables:
-    if(fn.split(".")[-1] == "java"):
-        print("")
-        print(java.getter(var))
-        print("")
-        print(java.setter(var))
-    elif(fn.split(".")[-1] == "php"):
-        print("")
-        print(php.getter(var))
-        print("")
-        print(php.setter(var))
-
+    for var in variables:
+        if(fn.split(".")[-1] == "java"):
+            print("")
+            print(java.getter(var))
+            print("")
+            print(java.setter(var))
+        elif(fn.split(".")[-1] == "php"):
+            print("")
+            print(php.getter(var))
+            print("")
+            print(php.setter(var))
+except:
+    print("")
+    print("save file first.")

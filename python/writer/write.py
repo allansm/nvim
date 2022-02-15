@@ -1,9 +1,15 @@
-import dependency
+def getArgs():
+    import argparse
+    
+    parser = argparse.ArgumentParser()
+    
+    parser.add_argument("fn")
+    parser.add_argument("txt")
+    
+    return parser.parse_args()
 
-from argsHandle import *
-from fileHandle import *
+args = getArgs()
 
-args = getArgs(["fn","txt"])
-
-remove(args.fn)
-writeFile(args.fn,args.txt)
+file = open(args.fn,"w")
+file.write(args.txt)
+file.close()
