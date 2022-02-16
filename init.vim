@@ -214,8 +214,7 @@ function! s:AutoCompleteModify(fname)
 endfunction
 
 function! s:Preference()
-	:vnew
-	:terminal
+	:execute "vnew ".Nvim()."/.1"
 	:new
 	:terminal
 	:Hs+8
@@ -226,9 +225,6 @@ function! s:Preference()
 	:Hs-8
 	:terminal
 	:wincmd w
-	:new
-	:terminal
-	:Hs-11
 	:wincmd w
 	:wincmd w
 	:wincmd w
@@ -375,3 +371,4 @@ filetype plugin on
 :imap <C-g><C-u> <esc>:GetDict<CR>:UseDict<CR><insert><C-N>
 :imap <C-u> <esc>:UseDict<CR><insert><C-N>
 :imap <C-d> <esc>:set omnifunc=common#ShowDict<CR><insert><C-X><C-O>
+:imap <C-g><C-s> <esc>:Gs<CR>
