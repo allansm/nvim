@@ -9,7 +9,7 @@ def getter(line):
     tmp = line.split()
     tmp[-1] = tmp[-1].replace(";","")
 
-    generated = "\tpublic "+mod+"function get"+fn(tmp[-1].replace("$",""))+"(){\n\t"+"return $this->"+tmp[-1].replace("$","")+";\n}"
+    generated = "\tpublic "+mod+"function get"+fn(tmp[-1].replace("$",""))+"(){\n\t\t"+"return $this->"+tmp[-1].replace("$","")+";\n\t}"
     
     return generated
 
@@ -21,7 +21,7 @@ def setter(line):
     tmp = line.split()
     tmp[-1] = tmp[-1].replace(";","")
 
-    generated = "\tpublic "+mod+"function set"+fn(tmp[-1].replace("$",""))+"("+tmp[-1]+"){\n\t"+"$this->"+tmp[-1].replace("$","")+" = "+tmp[-1]+";\n}"
+    generated = "\tpublic "+mod+"function set"+fn(tmp[-1].replace("$",""))+"("+tmp[-1]+"){\n\t\t"+"$this->"+tmp[-1].replace("$","")+" = "+tmp[-1]+";\n\t}"
     
     return generated
 

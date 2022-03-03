@@ -79,12 +79,14 @@ function! s:St()
 endfunction
 
 function! s:Gs()
+	:w
 	let fn = bufname()
 	let vimp = Nvim().'/python/GetterAndSetter/getterAndSetter.py'
 	let co = 'python '.vimp.' '.fn
 	let exe = 'normal Gi '.system(co)
 
 	:execute exe
+	:e!
 endfunction
 
 function! s:Fs()

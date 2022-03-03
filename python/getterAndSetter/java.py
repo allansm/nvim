@@ -9,7 +9,7 @@ def getter(line):
     tmp = line.split()
     tmp[-1] = tmp[-1].replace(";","")
 
-    generated = "\tpublic "+mod+tmp[-2]+" get"+fn(tmp[-1])+"(){\n\treturn this."+tmp[-1]+";\n}"
+    generated = "\tpublic "+mod+tmp[-2]+" get"+fn(tmp[-1])+"(){\n\t\treturn this."+tmp[-1]+";\n\t}"
     return generated
 
 def setter(line):
@@ -19,6 +19,6 @@ def setter(line):
 
     tmp = line.split()
     tmp[-1] = tmp[-1].replace(";","")
-    generated = "\tpublic "+mod+"void set"+fn(tmp[-1])+"("+tmp[-2]+" "+tmp[-1]+"){\n\tthis."+tmp[-1]+" = "+tmp[-1]+";\n}"
+    generated = "\tpublic "+mod+"void set"+fn(tmp[-1])+"("+tmp[-2]+" "+tmp[-1]+"){\n\t\tthis."+tmp[-1]+" = "+tmp[-1]+";\n\t}"
     return generated
 
