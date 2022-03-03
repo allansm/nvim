@@ -1,5 +1,6 @@
 import java
 import php
+import py
 
 def getLines(fname):
     f = open(fname,"r")
@@ -31,6 +32,8 @@ try:
         elif("private "in line):
             if(";" in line):
                 variables.append(line)
+        elif("=" in line):
+            variables.append(line)
 
     for var in variables:
         if(fn.split(".")[-1] == "java"):
@@ -43,6 +46,11 @@ try:
             print(php.getter(var))
             print("")
             print(php.setter(var))
+        elif(fn.split(".")[-1] == "py"):
+            print("")
+            print(py.getter(var))
+            print("")
+            print(py.setter(var))
 except:
     print("")
     print("save file first.")

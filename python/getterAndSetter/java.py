@@ -1,7 +1,5 @@
 def fn(variable):
     return variable.replace(variable[0:1],variable[0:1].capitalize(),1)
-def indent():
-    return "    "
 
 def getter(line):
     mod = ""
@@ -11,7 +9,7 @@ def getter(line):
     tmp = line.split()
     tmp[-1] = tmp[-1].replace(";","")
 
-    generated = "public "+mod+tmp[-2]+" get"+fn(tmp[-1])+"(){\n"+indent()+"return this."+tmp[-1]+";\n}"
+    generated = "\tpublic "+mod+tmp[-2]+" get"+fn(tmp[-1])+"(){\n\treturn this."+tmp[-1]+";\n}"
     return generated
 
 def setter(line):
@@ -21,6 +19,6 @@ def setter(line):
 
     tmp = line.split()
     tmp[-1] = tmp[-1].replace(";","")
-    generated = "public "+mod+"void set"+fn(tmp[-1])+"("+tmp[-2]+" "+tmp[-1]+"){\n"+indent()+"this."+tmp[-1]+" = "+tmp[-1]+";\n}"
+    generated = "\tpublic "+mod+"void set"+fn(tmp[-1])+"("+tmp[-2]+" "+tmp[-1]+"){\n\tthis."+tmp[-1]+" = "+tmp[-1]+";\n}"
     return generated
 
