@@ -160,6 +160,9 @@ endfunction
 
 function! s:AutoCompleteNew(fname)
 	:execute 'new '. a:fname
+	
+	:set number
+
 	let ffn = system('echo '.expand('%:p'))
 	
 	let flag = 1
@@ -179,6 +182,9 @@ endfunction
 
 function! s:AutoCompleteVNew(fname)
 	:execute 'vnew '. a:fname
+	
+	:set number
+
 	let ffn = system('echo '.expand('%:p'))
 
 	let flag = 1
@@ -198,6 +204,9 @@ endfunction
 
 function! s:AutoCompleteModify(fname)
 	:execute 'e '. a:fname
+	
+	:set number
+
 	let ffn = system('echo '.expand('%:p'))
 
 	let flag = 1
@@ -275,11 +284,15 @@ endfunction
 function! s:Nterminal()
 	:new
 	:terminal
+
+	:set nonumber
 endfunction
 
 function! s:Vterminal()
 	:vnew
 	:terminal
+
+	:set nonumber
 endfunction
 
 function! s:Fs2()
