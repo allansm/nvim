@@ -20,16 +20,16 @@ hi Normal cterm=italic ctermfg=green ctermbg=black
 hi Comment cterm=italic ctermfg=gray
 
 "values
-hi Constant cterm=italic ctermfg=white
+hi Constant cterm=italic ctermfg=lightgreen
 
 "$name
-hi Identifier cterm=NONE ctermfg=white  
+hi Identifier cterm=NONE ctermfg=lightgreen  
 
 "functionName
-hi Function ctermfg=white  	
+hi Function cterm=bold ctermfg=lightgreen  	
 
 "if else
-hi Conditional ctermfg=darkgreen
+hi Conditional ctermfg=darkgreen cterm=bold
 
 "from import
 hi Include ctermfg=darkgreen cterm=italic
@@ -42,7 +42,7 @@ hi Operator ctermfg=darkgreen
 hi Statement cterm=NONE ctermfg=darkgreen
 
 "function
-hi PreProc cterm=NONE ctermfg=white	
+hi PreProc cterm=bold ctermfg=lightgreen	
 
 "class private public int float etc
 hi Type cterm=NONE ctermfg=darkgreen 

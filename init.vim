@@ -1,5 +1,7 @@
 " require path variable XDG_CONFIG_HOME
 
+:tnoremap <Esc> <C-\><C-n>
+
 :colorscheme allan
 :set splitright
 :set splitbelow
