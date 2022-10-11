@@ -16,7 +16,7 @@ endif
 
 let colors_name = "allan"
 
-hi Normal cterm=italic ctermfg=green ctermbg=black
+hi Normal cterm=italic ctermfg=lightgreen
 hi Comment cterm=italic ctermfg=gray
 
 "values

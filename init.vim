@@ -302,6 +302,16 @@ function! s:Fs2()
 	:Preference2
 endfunction
 
+function! s:Current()
+	let co = 'python '.Nvim().'/python/tools/current.py'
+	:execute 'new term://'.co
+endfunction
+
+function! s:VCurrent()
+	let co = 'python '.Nvim().'/python/tools/current.py'
+	:execute 'vnew term://'.co
+endfunction
+
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=1 Vs call s:Vs(<f-args>)
@@ -350,6 +360,10 @@ command! -nargs=0 Nterminal call s:Nterminal()
 command! -nargs=0 Vterminal call s:Vterminal()
 command! -nargs=0 Fs2 call s:Fs2()
 
+command! -nargs=0 Current call s:Current()
+command! -nargs=0 VCurrent call s:VCurrent()
+
+
 "command! -nargs=0 Test call s:Test()
 
 :silent! UseDict
@@ -380,6 +394,9 @@ cnoreabbrev cdf ToFile
 
 cnoreabbrev vterm Vterminal
 cnoreabbrev nterm Nterminal
+
+cnoreabbrev vcurrent VCurrent
+cnoreabbrev current Current
 
 filetype plugin on
 
