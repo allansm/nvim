@@ -2,7 +2,7 @@
 
 :tnoremap <Esc> <C-\><C-n>
 
-:colorscheme allan
+:colorscheme allansm
 :set splitright
 :set splitbelow
 :set noai nocin nosi inde= 
