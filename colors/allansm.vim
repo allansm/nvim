@@ -11,6 +11,8 @@ set noequalalways
 
 set fillchars+=vert:\ 
 set fillchars+=eob:\ 
+
+set showtabline=0
  
 highlight clear
 if exists("syntax_on")

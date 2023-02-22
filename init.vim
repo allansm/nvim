@@ -285,14 +285,34 @@ endfunction
 
 function! s:Nterminal()
 	:new
-	:terminal
+
+	if has('nvim')
+		:terminal
+	else
+		:term ++curwin
+	endif
 
 	:set nonumber
 endfunction
 
 function! s:Vterminal()
 	:vnew
-	:terminal
+
+	if has('nvim')
+		:terminal
+	else
+		:term ++curwin
+	endif
+	
+	:set nonumber
+endfunction
+
+function! s:Eterminal()
+	if has('nvim')
+		:terminal
+	else
+		:term ++curwin
+	endif
 	
 	:set nonumber
 endfunction
@@ -358,6 +378,8 @@ command! -nargs=0 Memorized call s:Memorized()
 
 command! -nargs=0 Nterminal call s:Nterminal()
 command! -nargs=0 Vterminal call s:Vterminal()
+command! -nargs=0 Eterminal call s:Eterminal()
+
 command! -nargs=0 Fs2 call s:Fs2()
 
 command! -nargs=0 Current call s:Current()
@@ -394,6 +416,7 @@ cnoreabbrev cdf ToFile
 
 cnoreabbrev vterm Vterminal
 cnoreabbrev nterm Nterminal
+cnoreabbrev eterm Eterminal
 
 cnoreabbrev vcurrent VCurrent
 cnoreabbrev current Current
