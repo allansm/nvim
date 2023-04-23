@@ -332,6 +332,14 @@ function! s:VCurrent()
 	:execute 'vnew term://'.co
 endfunction
 
+function! s:Comment(x)
+	:execute ":'<,'>s/^/".a:x."/"
+endfunction
+
+function! s:Rcomment(x)
+	:execute ":'<,'>s/^".a:x."//"
+endfunction
+
 command! -nargs=1 -complete=file Exec call s:Exec(<f-args>)
 
 command! -nargs=1 Vs call s:Vs(<f-args>)
@@ -385,7 +393,8 @@ command! -nargs=0 Fs2 call s:Fs2()
 command! -nargs=0 Current call s:Current()
 command! -nargs=0 VCurrent call s:VCurrent()
 
-
+command! -nargs=1 Comment call s:Comment(<f-args>)
+command! -nargs=1 Rcomment call s:Rcomment(<f-args>)
 "command! -nargs=0 Test call s:Test()
 
 :silent! UseDict
@@ -420,6 +429,8 @@ cnoreabbrev eterm Eterminal
 
 cnoreabbrev vcurrent VCurrent
 cnoreabbrev current Current
+cnoreabbrev '<,' Comment
+cnoreabbrev '<, Rcomment
 
 filetype plugin on
 
